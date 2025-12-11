@@ -1,47 +1,105 @@
-# Simulación Cuántica: Interferencia de Dos Partículas (Bosones, Fermiones y Distinguibles)
+# Simulación Cuántica del Efecto Hong–Ou–Mandel en 1D  
+### Bosones • Fermiones • Partículas Distinguibles
 
-Este repositorio contiene una simulación numérica del fenómeno de interferencia de dos partículas inspirado en el experimento de Hong–Ou–Mandel (HOM), modelando la interacción mediante un potencial Delta de Dirac y propagación cuántica en 1D.
+Este repositorio contiene una simulación numérica avanzada del comportamiento de dos partículas cuánticas al interactuar mediante un potencial Delta de Dirac, usando paquetes gaussianos y propagación de Fourier.  
 
-La animación generada muestra:
-
-- La función de probabilidad para bosones (estado simétrico)
-- La función de probabilidad para fermiones (estado antisimétrico)
-- El caso distinguible
-- La función de correlación local \( g^{(2)}(x,x) \)
-- La probabilidad de coincidencia en la diagonal
-- La distribución de separaciones \( |x_1 - x_2| \)
-
-Esto permite visualizar claramente:
-- **Bunching** en bosones  
-- **Antibunching** en fermiones  
-- La diferencia entre partículas idénticas y distinguibles
+El objetivo principal es ilustrar visual y cuantitativamente el **efecto Hong–Ou–Mandel (HOM)** y sus diferencias fundamentales entre bosones, fermiones y partículas distinguibles.
 
 ---
 
-## 🧠 Fundamento físico
+## 🧠 Introducción
 
-El experimento HOM muestra cómo dos partículas idénticas interfieren al cruzar un divisor de haz.  
-Aquí se implementa una analogía en 1D con:
+El experimento HOM es uno de los fenómenos cuánticos más famosos, demostrando que:
 
-- Paquetes gaussianos como estados iniciales  
-- Un potencial Delta que actúa como dispersor  
-- Evolución temporal mediante FFT  
-- Construcción de estados bipartícula:
+- Los **bosones** tienden a “agruparse” (*bunching*).  
+- Los **fermiones** tienden a evitarse por el principio de exclusión (*antibunching*).  
+- Las partículas distinguibles no presentan interferencia cuántica.
+
+Esta simulación reproduce de manera efectiva qué ocurre cuando dos partículas idénticas se acercan desde direcciones opuestas, interactúan con un potencial localizado y evolucionan en el tiempo.
+
+El enfoque numérico permite visualizar simultáneamente:
+
+- Función de probabilidad bidimensional  
+- Correlación local \( g^{(2)}(x,x) \)  
+- Probabilidad a lo largo de la diagonal (coincidencias)  
+- Distribución de separaciones  
+- Diferencias cualitativas entre simetrización, antisimetrización y su ausencia
+
+---
+
+## 📘 Modelo Físico
+
+### 1. Paquetes Gaussianos Iniciales
+
+Cada partícula inicia como:
 
 \[
-\Psi_B = \frac{1}{\sqrt{2}}(\psi_1 \psi_2 + \psi_2 \psi_1)
+\psi(x) = \left( \frac{2\Delta}{\pi} \right)^{1/4}
+e^{-\Delta(x-s_0)^2 + ik_0 x}
 \]
 
+con posiciones iniciales opuestas:
+
+- \( s_1 = -10 \)
+- \( s_2 = +10 \)
+
+### 2. Potencial Delta de Dirac
+
+Se usa un potencial localizado:
+
 \[
-\Psi_F = \frac{1}{\sqrt{2}}(\psi_1 \psi_2 - \psi_2 \psi_1)
+V(x) = \lambda \delta(x)
+\]
+
+El cual tiene soluciones exactas para transmisión y reflexión:
+
+\[
+T = \frac{1}{1 + i\beta}, \qquad  
+R = -\frac{i\beta}{1+i\beta}
+\]
+
+donde \( \beta = \lambda/|k| \).
+
+Esto permite generar la interferencia sin necesidad de resolver la ecuación de Schrödinger completa.
+
+### 3. Propagación Temporal
+
+La evolución libre en espacio de momentos se implementa usando FFT:
+
+\[
+e^{-ik^2\tau}
+\]
+
+Luego se agrega el efecto del potencial mediante los coeficientes \(T\) y \(R\).
+
+---
+
+## 🎲 Estados de Dos Partículas
+
+La simulación construye los estados:
+
+### Bosones (simétrico)
+\[
+\Psi_B = \frac{1}{\sqrt{2}}
+\left( \psi_1(x_1)\psi_2(x_2) + 
+       \psi_2(x_1)\psi_1(x_2) \right)
+\]
+
+### Fermiones (antisimétrico)
+\[
+\Psi_F = \frac{1}{\sqrt{2}}
+\left( \psi_1(x_1)\psi_2(x_2) - 
+       \psi_2(x_1)\psi_1(x_2) \right)
+\]
+
+### Distinguibles
+\[
+\Psi_D = \psi_1(x_1)\psi_2(x_2)
 \]
 
 ---
 
-## 📦 Requisitos
+## 📊 Animaciones y Resultados
 
-Instalar dependencias:
-
-```bash>
-<img width="1022" height="561" alt="Screenshot from 2025-12-11 13-35-06" src="https://github.com/user-attachments/assets/ca2ec098-e5cf-44d2-b3f7-7203ed15efdd" />
+El programa genera una animación con **seis paneles simultáneos**:
 
