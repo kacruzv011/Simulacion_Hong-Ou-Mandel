@@ -164,4 +164,4 @@ Este trabajo se inspira y expande sobre las ideas presentadas en:
 
     Z. J. Deng, X. Zhang, Y. Shen, W. T. Liu, and P. X. Chen, "Demonstrating two-particle interference with a one-dimensional delta potential well," arXiv:2408.16205 [quant-ph], 2024.
 
-El código y los resultados fueron desarrollados como parte del proyecto de investigación [Nombre de tu proyecto o curso, si aplica] en la Universidad Distrital Francisco José de Caldas.
+El código y los resultados fueron desarrollados como parte del proyecto de investigación Cuantica Avanzada en la Universidad Distrital Francisco José de Caldas.
