@@ -1,9 +1,7 @@
 # Simulación Cuántica del Efecto Hong–Ou–Mandel en 1D
 ### Bosones • Fermiones • Partículas Distinguibles
 
-![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
-![NumPy](https://img.shields.io/badge/Library-NumPy-orange.svg)
-![Matplotlib](https://img.shields.io/badge/Library-Matplotlib-green.svg)
+
 
 Este repositorio contiene una simulación numérica del **efecto Hong–Ou–Mandel (HOM)**, uno de los fenómenos más fundamentales y contraintuitivos de la mecánica cuántica. El código simula la dispersión de dos paquetes de onda cuánticos contra un potencial delta unidimensional y visualiza las dramáticas diferencias en el comportamiento final para bosones, fermiones y partículas distinguibles.
 
@@ -23,8 +21,6 @@ Este video es el punto de partida ideal para comprender los conceptos antes de e
 
 https://youtu.be/o3-ujWfGUkM
 
-*(Para insertarlo con una miniatura, reemplaza `ID_DEL_VIDEO` y `URL_COMPLETA_DEL_VIDEO` en la siguiente línea):*
-markdown
 
 
 
